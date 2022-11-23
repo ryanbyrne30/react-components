@@ -1,1 +1,1 @@
-export { default as FormError } from "./FormError";
+export { default as DisplayFormError, type FormError } from "./FormError";

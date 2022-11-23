@@ -1,11 +1,13 @@
 import React from "react";
 import z from "zod";
 
-export default function FormError({
+export type FormError = z.ZodError | { message: string } | string | null;
+
+export default function DisplayFormError({
   error,
   className,
 }: {
-  error: z.ZodError | { message: string } | string | null;
+  error: FormError;
   className?: string;
 }) {
   if (!error) return <span></span>;
