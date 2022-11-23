@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/ryanbyrne30"
   },
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Custom React components",
   "repository": "git@github.com:ryanbyrne30/react-components.git",
   "author": "ryanbyrne30 <ryanjbyrne30@gmail.com>",
@@ -29,5 +29,8 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "zod": "^3.19.1"
+  }
 }
