@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/ryanbyrne30"
   },
-  "version": "1.0.7",
+  "version": "1.0.15",
   "description": "Custom React components",
   "repository": "git@github.com:ryanbyrne30/react-components.git",
   "author": "ryanbyrne30 <ryanjbyrne30@gmail.com>",

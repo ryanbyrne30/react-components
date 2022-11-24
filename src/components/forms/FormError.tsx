@@ -1,7 +1,12 @@
 import React from "react";
 import z from "zod";
 
-export type FormError = z.ZodError | { message: string } | string | null;
+export type FormError =
+  | z.ZodError
+  | { message: string }
+  | { errors: { path: (string | number)[]; message: string }[] }
+  | string
+  | null;
 
 export default function DisplayFormError({
   error,
@@ -11,19 +16,24 @@ export default function DisplayFormError({
   className?: string;
 }) {
   if (!error) return <span></span>;
-  if (error instanceof z.ZodError)
+
+  if (typeof error === "string")
+    return <span className={className}>{error}</span>;
+
+  if ("message" in error)
+    return <span className={className}>{error.message}</span>;
+
+  if (error instanceof z.ZodError || "errors" in error)
     return (
       <ul className={className}>
+        <li>Is Zod Error</li>
         {error.errors.map((e, idx) => (
           <li key={idx}>
-            {e.message} {e.path.join(", ")}
+            {e.path.join(", ")} - {e.message}
           </li>
         ))}
       </ul>
     );
-  return (
-    <span className={className}>
-      {typeof error === "string" ? error : error.message}
-    </span>
-  );
+
+  return <span className={className}>{error}</span>;
 }
